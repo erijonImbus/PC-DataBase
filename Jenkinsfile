@@ -4,7 +4,7 @@ pipeline {
     environment {
         PYTHON_PATH = "${params.python}"
         JAVA_PATH = "${params.java}"
-        ROBOT_OUTPUT_DIR = "C:\Users\erijon.IMBUS\Desktop\RBF-MATERIALS\PC-DataBase-Project\PC-DataBase\Logs"
+        ROBOT_OUTPUT_DIR = "C:\\Users\\erijon.IMBUS\\Desktop\\RBF-MATERIALS\\PC-DataBase-Project\\PC-DataBase\\Logs"
     }
 
     parameters {
