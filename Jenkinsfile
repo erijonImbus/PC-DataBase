@@ -7,8 +7,8 @@ pipeline {
     }
 
     parameters {
-        string(name: 'python', defaultValue: 'C:\Program Files\Python313\python.exe', description: 'Path to Python executable')
-        string(name: 'java', defaultValue: 'C:\Program Files\Java\jdk-17\bin\java.exe', description: 'Path to Java executable')
+        string(name: 'python', defaultValue: 'C:\\Program Files\\Python313\\python.exe', description: 'Path to Python executable')
+        string(name: 'java', defaultValue: 'C:\\Program Files\\Java\\jdk-17\\bin\\java.exe', description: 'Path to Java executable')
     }
 
     stages {
