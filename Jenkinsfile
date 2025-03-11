@@ -42,8 +42,6 @@ pipeline {
             steps {
                 // Archive the output files (logs, reports, XML results)
                 archiveArtifacts artifacts: "${ROBOT_OUTPUT_DIR}/*.xml, ${ROBOT_OUTPUT_DIR}/*.html", allowEmptyArchive: true
-                // Optionally, you can use JUnit format to parse XML results for Jenkins
-                junit "${ROBOT_OUTPUT_DIR}/*.xml"
             }
         }
     }
