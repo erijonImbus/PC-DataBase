@@ -2,14 +2,13 @@ pipeline {
     agent any  // This means it can run on any available agent (node)
 
     environment {
-        // Define environment variables (if needed)
         PYTHON_PATH = "${params.python}"
         JAVA_PATH = "${params.java}"
     }
 
     parameters {
-        string(name: 'python', defaultValue: 'C:\\Path\\To\\Python', description: 'Path to Python executable')
-        string(name: 'java', defaultValue: 'C:\\Path\\To\\Java', description: 'Path to Java executable')
+        string(name: 'python', defaultValue: 'C:\Program Files\Python313\python.exe', description: 'Path to Python executable')
+        string(name: 'java', defaultValue: 'C:\Program Files\Java\jdk-17\bin\java.exe', description: 'Path to Java executable')
     }
 
     stages {
@@ -23,7 +22,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Ensure pip is installed and install dependencies
                     bat "pip install robotframework"
                     bat "pip install robotframework-seleniumlibrary"
                 }
@@ -32,7 +30,6 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                // Run the Robot Framework tests
                 bat "robot ComputerDataBase.robot"
             }
         }
