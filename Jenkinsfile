@@ -31,12 +31,14 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat "robot --outputdir ${ROBOT_OUTPUT_DIR} ComputerDataBase.robot"
+                script {
+                    // Run Robot Framework tests and save results in the specified output directory
+                    bat "robot --outputdir ${ROBOT_OUTPUT_DIR} ComputerDataBase.robot"
+                }
             }
         }
-    }
 
-    stage('Publish Results') {
+        stage('Publish Results') {
             steps {
                 // Archive the output files (logs, reports, XML results)
                 archiveArtifacts artifacts: "${ROBOT_OUTPUT_DIR}/*.xml, ${ROBOT_OUTPUT_DIR}/*.html", allowEmptyArchive: true
