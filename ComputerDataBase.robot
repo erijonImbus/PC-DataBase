@@ -26,6 +26,7 @@ Close Computer DB Browser
 
 Get Computer Data
     [Documentation]    Extract computer data from the table and return it as a dictionary.
+    [Tags]    smoke    pcdb-001
     ${Rows}    Get Element Count    //table[@class='computers zebra-striped']/tbody/tr
     ${Computers}    Create Dictionary
     FOR    ${i}    IN RANGE    1    ${Rows}+1
