@@ -14,7 +14,7 @@ pipeline {
         
         // Parameter for selecting which .robot file to execute
         choice(name: 'ROBOT_TEST_FILE', 
-               choices: getRobotTestFiles(), 
+               choices: [],  // Empty initially
                description: 'Select the .robot test case to run') // Dropdown list of available .robot files
                
         string(name: 'tags', defaultValue: '', description: 'Comma separated list of tags to filter test cases (e.g., tag1,tag2)')
@@ -37,14 +37,36 @@ pipeline {
             }
         }
 
+        stage('Get Robot Files List') {
+            steps {
+                script {
+                    // Get the list of available .robot files dynamically
+                    def robotFiles = getRobotTestFiles()
+                    
+                    // Update the dropdown choices dynamically
+                    currentBuild.description = "Available robot files: ${robotFiles.join(', ')}"
+                    
+                    // Update the parameter choices with the available robot files
+                    // This is done by creating a new set of choices for the ROBOT_TEST_FILE parameter
+                    def choices = robotFiles.collect { it.trim() }
+                    echo "Robot files found: ${choices}"
+                    
+                    // Set choices dynamically for the dropdown
+                    params.ROBOT_TEST_FILE = choices
+                }
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 script {
-                    def testFile = params.ROBOT_TEST_FILE  // Get the selected .robot file
-                    def testTags = params.tags  // Get the tags if any
+                    // Get the selected .robot file
+                    def testFile = params.ROBOT_TEST_FILE
+                    def testTags = params.tags
                     
+                    // Build the robot command
                     def command = "robot --outputdir ${ROBOT_OUTPUT_DIR} ${ROBOT_OUTPUT_DIR_DB}\\${testFile}"
-
+                    
                     // If tags are provided, add the --include option to filter tests
                     if (testTags) {
                         command += " --include ${testTags.replace(',', ' ')}"
