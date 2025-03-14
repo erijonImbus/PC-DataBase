@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.0 on win32)" generated="2025-03-14T15:07:13.874060" rpa="false" schemaversion="5">
+<suite id="s1" name="ProgressBar" source="c:\Users\erijon.IMBUS\Desktop\RBF-MATERIALS\PC-DataBase-Project\PC-DataBase\ProgressBar.robot">
+<test id="s1-t1" name="Test Progress Bar Start/Stop At 75 Percentage" line="9">
+<kw name="Open Browser Progress Bar" owner="ProgressBar" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:15.125931" level="INFO">Opening browser 'chrome' to base url 'http://uitestingplayground.com/progressbar'.</msg>
+<msg time="2025-03-14T15:07:17.266287" level="WARN">The chromedriver version (133.0.6943.141) detected in PATH at C:\Drivers\chromedriver.exe might not be compatible with the detected chrome version (134.0.6998.89); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-14T15:07:15.125127" elapsed="4.223538"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.349447" elapsed="0.042719"/>
+</kw>
+<status status="PASS" start="2025-03-14T15:07:15.122481" elapsed="4.270439"/>
+</kw>
+<kw name="Valid Progress Bar Page" owner="ProgressBar">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:19.428094" level="INFO">Current page contains text 'Progress Bar'.</msg>
+<arg>Progress Bar</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.396370" elapsed="0.032113"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:19.449502" level="INFO">Current page contains element '//button[@id='startButton']'.</msg>
+<arg>${START_BUTTON}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.428840" elapsed="0.021307"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:19.469518" level="INFO">Current page contains element '//button[@id='stopButton']'.</msg>
+<arg>${STOP_BUTTON}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.450737" elapsed="0.019181"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:19.486854" level="INFO">Current page contains element '//div[@id='progressBar']'.</msg>
+<arg>${PROGRESS_BAR}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.470301" elapsed="0.016911"/>
+</kw>
+<status status="PASS" start="2025-03-14T15:07:19.394683" elapsed="0.092761"/>
+</kw>
+<kw name="Click Start Button And Stop Button At 75Percent" owner="ProgressBar">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:19.489473" level="INFO">Clicking element '//button[@id='startButton']'.</msg>
+<arg>${START_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.489054" elapsed="0.087565"/>
+</kw>
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${PROGRESS_BAR}</arg>
+<arg>75%</arg>
+<arg>timeout=45s</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2025-03-14T15:07:19.576984" elapsed="15.285539"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-14T15:07:34.863426" level="INFO">Clicking element '//button[@id='stopButton']'.</msg>
+<arg>${STOP_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-14T15:07:34.862982" elapsed="0.068583"/>
+</kw>
+<status status="PASS" start="2025-03-14T15:07:19.488454" elapsed="15.443388"/>
+</kw>
+<kw name="Close Browser Proggres Bar" owner="ProgressBar" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-03-14T15:07:34.933191" elapsed="2.173529"/>
+</kw>
+<status status="PASS" start="2025-03-14T15:07:34.932661" elapsed="2.174668"/>
+</kw>
+<status status="PASS" start="2025-03-14T15:07:15.120697" elapsed="21.987894"/>
+</test>
+<status status="PASS" start="2025-03-14T15:07:13.880498" elapsed="23.231472"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="ProgressBar">ProgressBar</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-14T15:07:17.266287" level="WARN">The chromedriver version (133.0.6943.141) detected in PATH at C:\Drivers\chromedriver.exe might not be compatible with the detected chrome version (134.0.6998.89); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry</msg>
+</errors>
+</robot>
